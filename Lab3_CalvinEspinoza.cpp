@@ -40,6 +40,7 @@ void Hamming()
 {
 
 	string bits;
+	string nums;
 	int d = 0;
 	cout << "Introduzca los bits: ";
 	cin >> bits;
@@ -51,7 +52,7 @@ void Hamming()
 	{
 		d++;
 	} 
-	cout << d;
+	//cout << d;
 
 
 	bool boolean = false;
@@ -59,14 +60,16 @@ void Hamming()
 		if (pow(2,P) >= d + P +1){
 			boolean = true;
 		} else {
+			nums = nums + to_string((int)pow(2,P));
 			boolean = false;
 		}	
 		P++;
 
 	}
-	cout << P;
+	cout << nums << endl;
+	cout << P << endl;
 
-	cout << "Ya\n";
+	cout << "Ya  no\n";
 }
 
 void Ruffini()
@@ -99,7 +102,8 @@ void Ruffini()
 			cin >> valor;
 
 			imprimirMatriz(mat, grado + 1);
-			vector.push_back(mat);
+			cout << endl;
+			//vector.push_back(mat);
 		}
 		else {
 			for(int k = 0; k <= grado; k++)
@@ -115,25 +119,35 @@ void Ruffini()
 				}
 				imprimirMatriz(mat, grado + 1);	
 				cout << endl;
-				
-				vector.push_back(mat);	
+				//vector.push_back(mat);	
 			}
-			cout << endl;
 			
 		}
 					
 		
 	}
+	
+	cout << "El cociente es: ";
+	for (int m = 0; m <= grado; m++)
+	{
+		if (grado - m - 1 == 0){
+			cout << mat[2][m] << endl;
+		} 
+		if (grado - m - 1 >= 1) {
+			cout << mat[2][m] << "x^" << grado - m - 1 << " + ";
+		} 
+	}
 	cout << "El residuo es: " << mat[2][grado] << endl;
-
+	cout << endl;
+	/*
 	for (int l = 0; l < vector.size(); l++)
 	{
 		imprimirMatriz(vector.at(l), grado + 1);
 		cout << endl;
-	}
+	}*/
 }
 
-void imprimirMatriz(int** mat, int size){
+void imprimirMatriz(int** mat, int size){	
 	for(int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < size; j++)
